@@ -1,0 +1,68 @@
+extends ./layouts/index 
+
+block contenido
+      main.container.mt-3
+        .row 
+            
+            .row.justify-content-center.col
+                if(errores)
+                    each error in errores 
+                        .alert.alert-danger.text-center=error.mensaje
+                
+                
+                .d-flex.justify-content-center
+                    .col-md-4
+
+                        
+                        p.my-3.titulo_intermedio Buscar Terreno
+                        
+                        form#buscar(action="inicio" method="POST" onsubmit="")
+                            .form-group
+                                label(for="padron") Buscar por Numero de padron 
+                                input#padron.mb-2(type="text" placeholder="Numero de Padron"
+                                name="padron" class="form-control")
+                            button.btn.btn-block.btn-success(type="submit") 
+                                |Buscar
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <circle cx="10" cy="10" r="7" />
+                                <line x1="21" y1="21" x2="15" y2="15" />
+                                </svg>
+                         
+
+                .container.mt-4
+                    .row 
+                        .row.justify-content-center.col
+                            .col-md-8.col-lg-5.mb-1 
+                                if datos
+                                    form#datos(action="editar-registro" method="POST" onsubmit="")
+                                        .form-group  
+                                            
+                                                .card.shadow-lg.p-3.mb-3.bg-body.rounded 
+                                                    .card-header.shadow.p-3.mb-2.bg-body.rounded 
+                                                        h5.my-1.titulo_intermedio Informacion del Padron :
+                                                        p.card-title.px-3 <span class="padron">#{padron}</span>
+                                                    .card-body 
+                                                        .list-group.list-group-flush  
+                                                            each dato in datos 
+                                                                li.list-group-item <span class="fs-5">#{dato}</span>
+                                                    .card-footer.container-fluid.p-2
+
+                                                    //- Boton Editar
+                                                    a.btn.btn-block.btn-primary.mb-4(href=`/editar-registro/${id}`) 
+                                                        |Editar Registro 
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                                                        <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                                                        <line x1="16" y1="5" x2="19" y2="8" />
+                                                        </svg>
+                                                    
+                                                    //- Boton Eliminar
+                                                    a.btn.btn-block.btn-danger(href=`/eliminar-registro/${id}`) 
+                                                        |Eliminar
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-x" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <rect x="4" y="4" width="16" height="16" rx="2" />
+                                                        <path d="M10 10l4 4m0 -4l-4 4" />
+                                                        </svg>     

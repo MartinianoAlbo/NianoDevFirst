@@ -1,0 +1,31 @@
+{
+  "name": "nianodev",
+  "version": "1.0.0",
+  "description": "NianoDevFirst",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MartinianoAlbo/NianoDevFirst.git"
+  },
+  "type": "module",
+  "author": "Alvaro Martiniano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MartinianoAlbo/NianoDevFirst/issues"
+  },
+  "homepage": "https://github.com/MartinianoAlbo/NianoDevFirst#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.3.2",
+    "pug": "^3.0.2",
+    "sequelize": "^6.8.0",
+    "sweetalert2": "^11.1.10"
+  },
+  "devDependencies": {
+    "handlebars": "^4.7.7",
+    "nodemon": "^2.0.14"
+  }
+}

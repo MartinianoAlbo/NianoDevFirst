@@ -1,0 +1,144 @@
+extends ./layouts/index
+
+block contenido
+
+    main.container.mt-3
+        .row 
+            .row.justify-content-center.col
+                if alertas
+                    each alerta in alertas 
+                        if alerta.mensajeError
+                            .alert.alert-danger.text-center=alerta.mensajeError
+                        else if alerta.mensajeExito
+                            .alert.alert-success.text-center=alerta.mensajeExito
+                        else 
+                            .alert.alert-danger.text-center=alerta.mensajeExiste 
+
+                .d-flex.justify-content-center
+                    .col-md-4 
+
+                        p.my-3.titulo_intermedio Datos Catastrales
+                        
+                        form#datos(action="nuevo-registro" method="POST")
+                            .form-group
+                                label(for="padron") Padron 
+                                input#padron.mb-2(type="text" placeholder="Numero de Padron"
+                                value=padron name="padron" class="form-control")
+                            
+                            .form-group
+                                label(for="matricula") Matricula 
+                                input#matricula.mb-2(type="text" placeholder="Matricula"
+                                value=matricula name="matricula" class="form-control")
+                            
+                            .form-group
+                                label(for="propietario") Propietario 
+                                input#propietario.mb-2(type="text" placeholder="Nombre de Propietario"
+                                value=propietario name="propietario" class="form-control")
+
+                            .form-group
+                                label(for="domicilio") Domicilio
+                                input#domicilio.mb-2(type="text" placeholder="Domicilio"
+                                value=domicilio name="domicilio" class="form-control")
+                            
+                            .form-group
+                                label(for="responsable_fiscal") Responsable Fiscal 
+                                input#responsable_fiscal.mb-4(type="text" placeholder="Responsable Fiscal"
+                                value=responsable_fiscal name="responsable_fiscal" class="form-control")
+                            
+                            p.my-3.titulo_intermedio Datos Urbanos
+                            
+                            .switches
+                                .form-check.form-switch
+                                    label.my-1(for="cloacas") Cloacas
+                                    input#cloacas.form-check-input(type='checkbox' value=cloacas name="cloacas" class="form-control")
+                                    
+                                .form-check.form-switch
+                                    label.my-1(for="gas") Gas
+                                    input#gas.form-check-input(type='checkbox' value=gas name="gas" class="form-control")
+                                    
+                                .form-check.form-switch
+                                    label.my-1(for="agua") Agua
+                                    input#agua.form-check-input(type='checkbox' value=agua name="agua" class="form-control")
+                                    
+                                .form-check.form-switch.mb-2
+                                    label.my-1(for="alumbrado") Alumbrado
+                                    input#alumbrado.form-check-input(type='checkbox' value=alumbrado name="alumbrado" class="form-control")
+
+                            .form-group
+                            label(for="accesibilidad") Accesibilidad 
+                            select#accesibilidad.mb-2(name="accesibilidad" value=accesibilidad class="form-control")
+                                option(selected ="true" disabled="disabled") -- Seleccionar --
+                                option(value="pavimento") Pavimentado 
+                                option(value="mejorado") Mejorado 
+                                option(value="enrripiado") Enrripiado   
+
+                            .form-group
+                                label(for="comisarias") Comisarias 
+                                input#comisarias.mb-2(type="text" placeholder="Comisarias" value=comisarias name="comisarias" class="form-control")
+
+                            .form-group
+                                label(for="salud") Salud 
+                                input#salud.mb-2(type="text" placeholder="Centros de Salud" value=salud name="salud" class="form-control")
+
+                            .form-group
+                                label(for="deporte") Deportes
+                                input#deporte.mb-2(type="text" placeholder="Deportes" value=deporte name="deporte" class="form-control")
+
+                            .form-group
+                                label(for="maternal") Jardines Maternales 
+                                input#maternal.mb-2(type="text" placeholder="Jardines Maternales" value=maternal name="maternal" class="form-control")
+
+                            .form-group
+                                label(for="nivel_inicial") Escuelas Nivel Inicial
+                                input#nivel_inicial.mb-2(type="text" placeholder="Escuelas Nivel Inicial" value=nivel_inicial name="nivel_inicial" class="form-control")
+
+                            .form-group                   
+                                label(for="primario") Escuelas Nivel Primario 
+                                input#primario.mb-2(type="text" placeholder="Escuelas Nivel Primario" value=primario name="primario" class="form-control")
+
+                            .form-group                 
+                                label(for="secundario") Escuelas Nivel Secundario
+                                input#secundario.mb-2(type="text" placeholder="Escuelas Nivel Secundario" value=secundario name="secundario" class="form-control")
+
+                            .form-group              
+                                label(for="terciarios") Terciarios 
+                                input#terciarios.mb-4(type="text" placeholder="Terciarios" value=terciarios name="terciarios" class="form-control")
+                            
+                            
+                                p.my-3.titulo_intermedio Datos Ambientales
+                            .form-group    
+                                label(for="pasivo_urbano") Pasivos Urbanos
+                                input#pasivo_urbano.mb-2(type="text" placeholder="Pasivos Urbanos" value=pasivo_urbano name="pasivo_urbano" class="form-control")
+                            
+                            .form-group    
+                                label(for="industrias") Industrias 
+                                input#industrias.mb-2(type="text" placeholder="Industrias" value=industrias name="industrias" class="form-control")
+                            
+                            .form-group    
+                                label(for="contaminantes") Contaminantes 
+                                input#contaminantes.mb-2(type="text" placeholder="Contaminantes" value=contaminantes name="contaminantes" class="form-control")
+                            
+                            .form-group    
+                                label(for="planes_urbanos") Planes Urbanos 
+                                input#planes_urbanos.mb-2(type="text" placeholder="Planes Urbanos" value=planes_urbanos name="planes_urbanos" class="form-control")
+                            
+                            .form-group
+                                label(for="programas") Programas 
+                                input#programas.mb-2(type="text" placeholder="Programas"
+                                value=programas name="programas" class="form-control")
+
+                            .form-group    
+                                label(for="observaciones") Observaciones 
+                                textarea#observaciones.mb-4(ntype="text" placeholder="Observaciones"
+                                name="observaciones" class="form-control" cols="30", rows="5")=observaciones
+ 
+                        
+                                button.btn.btn-success(onclick=`exito()`)
+                                    |Guardar
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-align-justified" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <line x1="4" y1="6" x2="20" y2="6" />
+                                    <line x1="4" y1="12" x2="20" y2="12" />
+                                    <line x1="4" y1="18" x2="16" y2="18" />
+                                    </svg>  
+                                                        

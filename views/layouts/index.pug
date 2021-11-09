@@ -1,0 +1,72 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Banco de Tierra
+        link(href='https://fonts.googleapis.com/css2?family=Poppins&display=swap' rel='stylesheet')
+        link(href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap" rel="stylesheet")
+        link(href='https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&family=Staatliches&display=swap' rel='stylesheet')
+        link(rel="stylesheet" href="/css/bootstrap.css")
+        link(rel="stylesheet" href="/css/style.css")
+        link(href="/css/style.css")
+
+    body 
+        include header
+
+        block contenido
+
+        script(src='https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.all.min.js')
+
+
+        script.
+            function confirmar(){
+                Swal.fire({
+                    title: 'Estas seguro de eliminar?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, Eliminar!',
+                    cancelButtonText: 'Cancelar',
+                }).then(function (result){
+                    if (result.isConfirmed) {
+                        Swal.fire(
+                        'Eliminado!',
+                        'El Registro fue Eliminado.',
+                        'success'
+                        )                   
+                    }
+
+                })
+
+               
+            }
+
+        script.
+            function exito(){
+                Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Registro agregado con exito,
+                showConfirmButton: false,
+                timer: 1500
+                })
+
+
+            }
+
+        script.
+            function redireccionar (req,res,next) {
+                setTimeout(() => {
+                    res.redirect('/inicio')
+                }, 3000);
+            }
+
+        include footer
+
+
+
+
+
